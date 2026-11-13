@@ -192,11 +192,15 @@ int main() {
     cout << "------------------------------------" << endl;
 
     // Star graph example
-    Graph starGraph(5); 
-    starGraph.addEdge(2, 3); 
-    starGraph.addEdge(1, 2); 
-    starGraph.addEdge(2, 4); 
-    starGraph.addEdge(0, 2); 
+    Graph starGraph(5);
+    starGraph.addEdge(2, 3);
+    starGraph.addEdge(3, 2);
+    starGraph.addEdge(1, 2);
+    starGraph.addEdge(2, 1);
+    starGraph.addEdge(2, 4);
+    starGraph.addEdge(4, 2);
+    starGraph.addEdge(0, 2);
+    starGraph.addEdge(2, 0);
     cout << "Star graph Adjacency Matrix: " << endl;  
     starGraph.displayMatrix(); 
     cout << "Center of graph: " << starGraph.findCenterOfStar(starGraph) << endl; 
