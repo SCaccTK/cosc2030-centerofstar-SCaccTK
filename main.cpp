@@ -127,14 +127,47 @@ public:
     // Get all edges in the graph
     vector<pair<int, int>> getEdges() const {
         vector<pair<int, int>> edges;
-        //TODO: implement this function 
+
+        // Go through every vertex in the adjacency matrix
+        for (int i = 0; i < numVertices; ++i) {
+            for (int j = 0; j < numVertices; ++j) {
+
+                // If there is an edge, add it to the edge list
+                if (adjMatrix[i][j] == 1) {
+                    edges.push_back({i, j});
+                }
+            }
+        }
+
         return edges;
     }
 
     // Function to find the center of a star graph
     int findCenterOfStar(const Graph& g) {
-        //TODO: implement this function
-        return -1; //TODO: change this to return the center node value
+
+        // Get all edges from the graph using getEdges()
+        vector<pair<int, int>> edges = g.getEdges();
+
+        // Create a vector to count connections for each vertex
+        vector<int> degree(numVertices, 0);
+
+        // Count how many edges connect to each vertex
+        for (const auto& edge : edges) {
+            degree[edge.first]++;
+            degree[edge.second]++;
+        }
+
+        // Find the vertex with the most connections
+        int center = 0;
+
+        for (int i = 1; i < numVertices; ++i) {
+            if (degree[i] > degree[center]) {
+                center = i;
+            }
+        }
+
+        // Return the center vertex
+        return center;
     }
 };
 
